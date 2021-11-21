@@ -56,9 +56,9 @@ terraform apply
  - We are currently migrating to [AKS](https://azure.microsoft.com/fr-fr/services/kubernetes-service/) and [ACR](https://azure.microsoft.com/fr-fr/services/container-registry/)
  - My personnal AWS account is locked. I tried to recreate one but credit card is not working. So petclinic helm chart have been tested on my workstation (Ubuntu LTS with microk8s)
 
-To conclude, I did not manage to create AKS managed cluster.  BTW It is not gree... But tool is great.
+To conclude, I did not manage to create AKS managed cluster.  BTW AWS is not free... But tool is great.
 
-I used [hub.docker.com](https://hub.docker.com/repository/docker/nabla/petclinic-native) instead of ECR... And Github to stre my chart.
+I used [hub.docker.com](https://hub.docker.com/repository/docker/nabla/petclinic-native) instead of ECR... And Github to store my chart.
 
 2. Adapt [PetClinic](https://github.com/spring-projects/spring-petclinic) application to run on the previously created cluster
 
@@ -103,6 +103,13 @@ git submodule add --force https://github.com/AlbanAndrieu/spring-petclinic.git
 
  - As a sample I have adapted frontend javascript project to be deployed on k8s : https://github.com/AlbanAndrieu/nabla-servers-bower-sample/tree/master/packs, previously deployed with [docker-compose](https://github.com/AlbanAndrieu/nabla-servers-bower-sample/blob/master/docker-compose/docker-compose.yml) on [Jenkins](http://albandrieu.com/jenkins/) and many other java projects as standalone.
 
+Petclinic charts are working [HELM](HELM.md) out of the box. 
+
+Below should work on you cluster, if you can access docker hub...
+```shell
+helm install --kubeconfig ${HOME}/.kube/config --kube-context microk8s my-petclinic helm-petclinic-1.0.0.tgz --timeout 5m0s --wait --atomic --replace
+```
+
 To conclude I did basic CI, but not CD for this tests.
 But I can show you that I do CD at work...
 
@@ -116,7 +123,7 @@ Pick a subject below and write a 500-1000 words essay
 
 I will choose subject 1.
 
-See ESSAY.md
+See [ESSAY](ESSAY.md)
 
 ### Python/SQL debug
 
@@ -127,4 +134,4 @@ specify a region" when connecting to SSM and RDS
 * When the DB is created, privileges aren't working as expected
 2. Provide an updated version of the script migrated to PostgreSQL.
 
-See PYTHON.md
+See [PYTHON](PYTHON.md)
