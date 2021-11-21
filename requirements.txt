@@ -1,0 +1,4 @@
+boto3==1.20.10 # https://aws.amazon.com/fr/sdk-for-python/
+#py-postgresql==1.2.2 # https://pypi.org/project/py-postgresql/
+psycopg2-binary==2.9.2 # https://pypi.org/project/psycopg2/
+pymysql==1.0.2
