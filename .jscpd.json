@@ -1,0 +1,19 @@
+{
+  "threshold": 1,
+  "reporters": ["html", "markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv'/**",
+    "**/*cache*/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/report/**",
+    "**/target/**",
+    "mySQL.py",
+    "postgreSQL-intial.py",
+    "postgreSQL.py",
+    "**/*.svg"
+  ]
+}
