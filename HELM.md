@@ -36,8 +36,8 @@ helm package ./packs/helm-petclinic/charts
 
 ```shell
 helm uninstall --kubeconfig ${HOME}/.kube/config --kube-context microk8s --namespace jenkins my-petclinic helm-petclinic-1.0.0.tgz
-helm install --kubeconfig ${HOME}/.kube/config --kube-context microk8s  my-petclinic helm-petclinic-1.0.0.tgz --timeout 5m0s --wait --atomic
-helm install --kubeconfig ${HOME}/.kube/config --kube-context microk8s --namespace nabla-standalone-aandrieu my-petclinic helm-petclinic-1.0.0.tgz --timeout 5m0s --wait --atomic --devel --replace --dependency-update --set imagePullPolicy=Always
+helm install --kubeconfig ${HOME}/.kube/config --kube-context microk8s --namespace jenkins my-petclinic helm-petclinic-1.0.0.tgz --timeout 5m0s --wait --atomic
+helm install --kubeconfig ${HOME}/.kube/config --kube-context microk8s --namespace jenkins my-petclinic helm-petclinic-1.0.0.tgz --timeout 5m0s --wait --atomic --devel --replace --dependency-update --set imagePullPolicy=Always
 ```
 
 See result on https://github.com/AlbanAndrieu/spring-petclinic/releases/tag/helm-petclinic-1.0.0

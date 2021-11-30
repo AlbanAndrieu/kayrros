@@ -56,7 +56,7 @@ terraform apply
  - We are currently migrating to [AKS](https://azure.microsoft.com/fr-fr/services/kubernetes-service/) and [ACR](https://azure.microsoft.com/fr-fr/services/container-registry/)
  - My personnal AWS account is locked. I tried to recreate one but credit card is not working. So petclinic helm chart have been tested on my workstation (Ubuntu LTS with microk8s)
 
-To conclude, I did not manage to create AKS managed cluster.  BTW AWS is not free... But tool is great.
+To conclude, I did manage to create AKS managed cluster at [petclinic-native](http://af86714a48626468ab4d34de25446f3e-1284156163.eu-central-1.elb.amazonaws.com/). BTW AWS is not free... But tool is great.
 
 I used [hub.docker.com](https://hub.docker.com/repository/docker/nabla/petclinic-native) instead of ECR... And Github to store my chart.
 
@@ -103,7 +103,7 @@ git submodule add --force https://github.com/AlbanAndrieu/spring-petclinic.git
 
  - As a sample I have adapted frontend javascript project to be deployed on k8s : https://github.com/AlbanAndrieu/nabla-servers-bower-sample/tree/master/packs, previously deployed with [docker-compose](https://github.com/AlbanAndrieu/nabla-servers-bower-sample/blob/master/docker-compose/docker-compose.yml) on [Jenkins](http://albandrieu.com/jenkins/) and many other java projects as standalone.
 
-Petclinic charts are working [HELM](HELM.md) out of the box. 
+Petclinic charts are working [HELM](HELM.md) out of the box.
 
 Below should work on you cluster, if you can access docker hub...
 ```shell
@@ -135,3 +135,24 @@ specify a region" when connecting to SSM and RDS
 2. Provide an updated version of the script migrated to PostgreSQL.
 
 See [PYTHON](PYTHON.md)
+
+### ECR
+
+### Create ECR
+
+```
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native
+```
+
+### Push image
+
+```
+#docker pull nabla/petclinic-native:latest
+
+docker tag nabla/petclinic-native:latest 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native
+docker push 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native:latest
+````
+
+### Replace image in k8s
+
+Replace nabla/petclinic-native:latest by 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native:latest in kubernetes.tf

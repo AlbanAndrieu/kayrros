@@ -10,22 +10,22 @@ provider "kubernetes" {
   token                  = data.aws_eks_cluster_auth.cluster.token
 }
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "java-cluster"
-  cluster_version = "1.20"
-  subnets         = module.vpc.private_subnets
-  vpc_id          = module.vpc.vpc_id
+  source                 = "terraform-aws-modules/eks/aws"
+  cluster_name           = "java-cluster"
+  cluster_version        = "1.20"
+  subnets                = module.vpc.private_subnets
+  vpc_id                 = module.vpc.vpc_id
   kubeconfig_output_path = "~/.kube/"
   node_groups = {
     first = {
       desired_capacity = 2
-      max_capacity =  3
-      min_capacity = 1
-      instanace_type = "t3.small"
+      max_capacity     = 3
+      min_capacity     = 1
+      instanace_type   = "t2.small"
     }
   }
 }
-resource "null_resource" "java"{
+resource "null_resource" "java" {
   depends_on = [module.eks]
   provisioner "local-exec" {
     command = "aws eks --region eu-central-1  update-kubeconfig --name $AWS_CLUSTER_NAME"
