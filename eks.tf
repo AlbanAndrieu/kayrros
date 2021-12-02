@@ -11,8 +11,9 @@ provider "kubernetes" {
 }
 module "eks" {
   source                 = "terraform-aws-modules/eks/aws"
+  version                = "17.24.0"
   cluster_name           = "java-cluster"
-  cluster_version        = "1.20"
+  cluster_version        = "1.21"
   subnets                = module.vpc.private_subnets
   vpc_id                 = module.vpc.vpc_id
   kubeconfig_output_path = "~/.kube/"

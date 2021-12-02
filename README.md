@@ -11,6 +11,10 @@ Kayrros devops tests
   * [Pet clinic](#pet-clinic)
   * [Essay](#essay)
   * [Python/SQL debug](#pythonsql-debug)
+  * [ECR](#ecr)
+  * [Create ECR](#create-ecr)
+  * [Push image](#push-image)
+  * [Replace image in k8s](#replace-image-in-k8s)
 
 <!-- tocstop -->
 
@@ -47,6 +51,7 @@ Based [java-app-deployment-to-aws-eks-with-terraform](https://medium.com/@selma.
 ```shell
 terraform init
 terraform validate
+terraform fmt
 terraform plan
 terraform apply
 ```
@@ -59,6 +64,11 @@ terraform apply
 To conclude, I did manage to create AKS managed cluster at [petclinic-native](http://af86714a48626468ab4d34de25446f3e-1284156163.eu-central-1.elb.amazonaws.com/). BTW AWS is not free... But tool is great.
 
 I used [hub.docker.com](https://hub.docker.com/repository/docker/nabla/petclinic-native) instead of ECR... And Github to store my chart.
+
+
+```shell
+terraform show
+```
 
 2. Adapt [PetClinic](https://github.com/spring-projects/spring-petclinic) application to run on the previously created cluster
 
@@ -140,13 +150,13 @@ See [PYTHON](PYTHON.md)
 
 ### Create ECR
 
-```
+```shell
 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native
 ```
 
 ### Push image
 
-```
+```shell
 #docker pull nabla/petclinic-native:latest
 
 docker tag nabla/petclinic-native:latest 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native
