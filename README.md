@@ -15,6 +15,7 @@ Kayrros devops tests
   * [Create ECR](#create-ecr)
   * [Push image](#push-image)
   * [Replace image in k8s](#replace-image-in-k8s)
+  * [Github - Terraform - AWS](#github---terraform---aws)
 
 <!-- tocstop -->
 
@@ -166,3 +167,11 @@ docker push 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native:lat
 ### Replace image in k8s
 
 Replace nabla/petclinic-native:latest by 172728779084.dkr.ecr.eu-central-1.amazonaws.com/petclinic-native:latest in kubernetes.tf
+
+### Github - Terraform - AWS
+
+[terraform-github](https://github.com/hashicorp/setup-terraform)
+
+[terraform-petclinic-native](https://app.terraform.io/app/nabla/workspaces/petclinic-native)
+
+[terraform-aws](https://learn.hashicorp.com/tutorials/terraform/aws-remote?in=terraform/aws-get-started)
