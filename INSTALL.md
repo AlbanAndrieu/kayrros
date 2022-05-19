@@ -26,7 +26,7 @@ git pull && git submodule init && git submodule update && git submodule status
 sudo apt-get install python3.9-dev
 sudo apt install libpq-dev
 sudo apt install terraform
- terraform --version
+terraform --version
 ```
 
 # virtualenv
@@ -89,9 +89,6 @@ docker push nabla/petclinic-native:latest
 docker save nabla/petclinic-native:latest | gzip > petclinic-native_latest.tar.gz
 
 ```
-
-
-
 
 See https://hub.docker.com/repository/docker/nabla/petclinic-native
 
